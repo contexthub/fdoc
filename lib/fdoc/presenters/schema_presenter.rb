@@ -68,7 +68,7 @@ class Fdoc::SchemaPresenter < Fdoc::BasePresenter
     md << "\n#{prefix}* __Example__: <tt>#{example.to_markdown}</tt>" if example
     md << "\n#{@schema['enum']}"
     (@schema.keys - Fdoc::SchemaPresenter::FORMATTED_KEYS).each do |key|
-      md << "\n#{prefix}* %{key} %{@schema[key]}"
+      md << "\n#{prefix}* #{key}: #{@schema[key]}"
     end
     if items = @schema["items"]
       md << "\n#{prefix}* Items"
