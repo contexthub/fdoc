@@ -65,10 +65,7 @@ class Fdoc::SchemaPresenter < Fdoc::BasePresenter
     md << "\n#{prefix}* __Required__: #{required?}" if nested?
     md << "\n#{prefix}* __Type__: #{type}" if type
     md << "\n#{prefix}* __Format__: #{format}" if format
-    if example
-      md << "\n#{prefix}* __Example__: "
-      md << '<pre><code>%s</code></pre>' % example.to_markdown
-    end
+    md << "\n#{prefix}* __Example__: <tt>#{example.to_markdown}</tt>" if example
     md << "\n#{@schema['enum']}"
     (@schema.keys - Fdoc::SchemaPresenter::FORMATTED_KEYS).each do |key|
       md << "\n#{prefix}* #{key}: #{@schema[key]}"
